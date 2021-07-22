@@ -9,6 +9,8 @@
 
 body {
     margin: 0px;
+    
+    background-color: var(--secondaryColor);
 }
 
 .header {
@@ -79,8 +81,6 @@ h1 {
     align-content: space-around;
 
     flex: 0 1 auto;
-
-    background-color: var(--secondaryColor);
 }
 
 .petCard {
