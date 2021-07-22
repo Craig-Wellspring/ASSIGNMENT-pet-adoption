@@ -11,7 +11,7 @@ const pets = [
       color: "Poop-Colored",
       specialSkill: "Just picks the tomatoes off of a sandwich instead of requesting a whole new sandwich.",
       type: "dino",
-      imageUrl: "http://www.jozilife.co.za/wp-content/uploads/The-Dino-Expo.jpg"
+      imageUrl: "https://discovery.sndimg.com/content/dam/images/discovery/editorial/Curiosity/2020/3/GettyImages-168839856.jpg.rend.hgtvcom.406.290.suffix/1583454574828.jpeg"
     },
     {
       name: "Whiskers",
@@ -74,7 +74,7 @@ const pets = [
       color: "Orange",
       specialSkill: "Can be around food without staring creepily at it.",
       type: "dino",
-      imageUrl: "http://www.cantref.com/userfiles/events/walking%20dino.jpg?w=600"
+      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7axUTBPqdlJSwxkNepuqovC7Mb6BQQh4JiA&usqp=CAU"
     },
     {
       name: "Buster",
@@ -210,3 +210,74 @@ const pets = [
       imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
     }
   ];
+
+
+
+const generateCardTemplate = (array, index) =>
+{
+  const cardTemplate = `
+        <div class="petCard">
+              <div class="cardTitle">
+              <h2>${array[index].name}</h2>
+          </div>
+          <div class="cardImage">
+              <img src="${array[index].imageUrl}" alt="Image of ${array[index].name}"/>
+              <h4>${array[index].color}</h4>
+              <p>${array[index].specialSkill}</p>
+          </div>
+          <div class="cardType" style="background-color: var(--${array[index].type}Color)">
+              <h3>${array[index].type}</h3>
+              <button id="unlistButton-${index}" class="unlistButton" onclick="unlistPet()">Unlist</button>
+          </div>
+        </div>
+      `;
+
+      return cardTemplate;
+}    
+
+
+const clearPage = () => {
+  document.getElementById("drawer").innerHTML = "";
+}
+
+const populatePage = (petArray) => {
+  clearPage();
+
+  for(let i = 0; i < petArray.length; i++)
+  {
+    document.getElementById("drawer").innerHTML += generateCardTemplate(petArray, i);
+    // const buttonID = "unlistButton-" + i;
+    // document.getElementById(buttonID).addEventListener("click", unlistPet);
+  };
+}
+
+const populateDogs = () => {
+  populatePage(pets.filter(pet => pet.type === "dog"));
+}
+const populateCats = () => {
+  populatePage(pets.filter(pet => pet.type === "cat"));
+}
+const populateDinos = () => {
+  populatePage(pets.filter(pet => pet.type === "dino"));
+}
+
+
+const unlistPet = () => {
+  //pets.splice(index, 1);
+  console.log("Unlist button pressed");
+  clearPage();
+  //populatePage(pets);
+}
+
+const initPage = () => {
+  clearPage();
+  populatePage(pets);
+}
+
+initPage();
+
+
+document.getElementById("dogButton").addEventListener("click", populateDogs);
+document.getElementById("catButton").addEventListener("click", populateCats);
+document.getElementById("dinoButton").addEventListener("click", populateDinos);
+document.getElementById("noFilterButton").addEventListener("click", initPage);
