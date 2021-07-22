@@ -1,3 +1,4 @@
+// Database
 const pets = [
   {
     name: "Dusty",
@@ -212,12 +213,16 @@ const pets = [
 ];
 
 
+// Variable Declaration
+let pageState = null;
 
+
+// Functions
 const generateCardTemplate = (index) => {
   const cardTemplate = `
         <div class="petCard">
-              <div class="cardTitle">
-              <h2>${pets[index].name} ${index}</h2>
+          <div class="cardTitle" id="cardTitleType-${pets[index].type}">
+              <h2>${pets[index].name}</h2>
           </div>
           <div class="cardImage">
               <img src="${pets[index].imageUrl}" alt="Image of ${pets[index].name}"/>
@@ -225,8 +230,8 @@ const generateCardTemplate = (index) => {
               <p>${pets[index].specialSkill}</p>
           </div>
           <div class="cardType" style="background-color: var(--${pets[index].type}Color)">
-              <h3>${pets[index].type}</h3>
-              <button id="buttonID-${index}" class="unlistButton" onclick="unlistPet(${index})">Unlist</button>
+              <h3>${pets[index].type.toUpperCase()}</h3>
+              <button class="unlistButton" id="buttonID-${index}" onclick="unlistPet(${index})"></button>
           </div>
         </div>
       `;
@@ -234,18 +239,13 @@ const generateCardTemplate = (index) => {
   return cardTemplate;
 }
 
-
-
-
-
-const clearCards = () => {
-  document.getElementById("drawer").innerHTML = "";
-}
-
 const generateCard = (index) => {
   document.getElementById("drawer").innerHTML += generateCardTemplate(index);
 }
 
+const clearCards = () => {
+  document.getElementById("drawer").innerHTML = "";
+}
 
 const populatePage = (filterType) => {
   clearCards();
@@ -261,23 +261,21 @@ const populatePage = (filterType) => {
   };
 }
 
-
 const unlistPet = (index) => {
   pets.splice(index, 1);
 
-  clearCards();
-
-  populatePage(null);  
+  populatePage(pageState);  
 }
 
 
+// Init
 const initPage = () => {
-  populatePage(null);
+  populatePage(pageState);
 
-  document.getElementById("dogButton").addEventListener("click", function () { populatePage("dog") });
-  document.getElementById("catButton").addEventListener("click", function () { populatePage("cat") });
-  document.getElementById("dinoButton").addEventListener("click", function () { populatePage("dino") });
-  document.getElementById("noFilterButton").addEventListener("click", function () { populatePage(null) });
+  document.getElementById("dogButton").addEventListener("click", function () { pageState = "dog"; populatePage(pageState); });
+  document.getElementById("catButton").addEventListener("click", function () { pageState = "cat"; populatePage(pageState); });
+  document.getElementById("dinoButton").addEventListener("click", function () { pageState = "dino"; populatePage(pageState); });
+  document.getElementById("noFilterButton").addEventListener("click", function () { pageState = null; populatePage(pageState);  });
 };
 
 

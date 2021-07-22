@@ -1,7 +1,7 @@
 :root {
     --dogColor: #35A7FF;
-    --catColor: #CFFFB0;
-    --dinoColor: #EF8275;
+    --catColor: #EF8275;
+    --dinoColor: #CFFFB0;
     --accentColor: #6A687A;
     --secondaryColor: #3E4C5E;
 }
@@ -28,7 +28,7 @@ body {
 h1 {
     color: black;
     text-decoration: underline;
-    font-size: 4vw;
+    font-size: 5vw;
 }
 
 .buttonDrawer {
@@ -40,11 +40,14 @@ h1 {
 .button {
     min-height: 44px;
     min-width: 88px;
+    width: 20vw;
 
     padding: 5px;
     border: 2px solid black;
     border-radius: 10px;
     margin: 5px;
+
+    font-size: 120%;
 }
 #dogButton {
     background-color: var(--dogColor);
@@ -64,7 +67,8 @@ h1 {
     width: 44px;
     height: 44px;
 
-    border-radius: 5px;
+    border-radius: 22px;
+    background-image: url("https://cdn.iconscout.com/icon/premium/png-512-thumb/no-filter-2694225-2236223.png");
 }
 
 
@@ -75,6 +79,8 @@ h1 {
     align-content: space-around;
 
     flex: 0 1 auto;
+
+    background-color: var(--secondaryColor);
 }
 
 .petCard {
@@ -90,11 +96,33 @@ h1 {
     margin: 10px;
 
     justify-content: space-between;
+    
+    background-color: var(--accentColor);
+}
+
+.cardTitle {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    border-bottom: 2px solid black;
+
+    margin-bottom: 15px;
+}
+#cardTitleType-dog {
+    background-color: var(--dogColor);
+}
+#cardTitleType-cat {
+    background-color: var(--catColor);
+}
+#cardTitleType-dino {
+    background-color: var(--dinoColor);
 }
 
 
 img {
     width: 250px;
+    height: 175px;
+    border: 2px solid black;
     border-radius: 10px;
 }
 
@@ -104,6 +132,9 @@ img {
     position: relative;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+
+    border-top: 2px solid black;
+
     z-index: 0;
 }
 
@@ -115,6 +146,7 @@ img {
     width: 44px;
     height: 44px;
 
-    border-radius: 5px;
-    /* background: url(https://www.freeiconspng.com/uploads/remove-icon-png-7.png); */
+    border-radius: 22px;
+    background-image: url("https://www.freeiconspng.com/uploads/remove-icon-png-7.png");
+    background-size: contain;
 }
