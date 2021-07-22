@@ -218,7 +218,7 @@ const generateCardTemplate = (array, index) =>
   const cardTemplate = `
         <div class="petCard">
               <div class="cardTitle">
-              <h2>${array[index].name}</h2>
+              <h2>${array[index].name} ${index}</h2>
           </div>
           <div class="cardImage">
               <img src="${array[index].imageUrl}" alt="Image of ${array[index].name}"/>
@@ -227,7 +227,7 @@ const generateCardTemplate = (array, index) =>
           </div>
           <div class="cardType" style="background-color: var(--${array[index].type}Color)">
               <h3>${array[index].type}</h3>
-              <button id="unlistButton-${index}" class="unlistButton" onclick="unlistPet()">Unlist</button>
+              <button id="buttonID-${index}" class="unlistButton" onclick="unlistPet(${index})">Unlist</button>
           </div>
         </div>
       `;
@@ -243,35 +243,63 @@ const clearPage = () => {
 const populatePage = (petArray) => {
   clearPage();
 
-  for(let i = 0; i < petArray.length; i++)
-  {
+  for(let i = 0; i < petArray.length; i++) {
     document.getElementById("drawer").innerHTML += generateCardTemplate(petArray, i);
-    // const buttonID = "unlistButton-" + i;
-    // document.getElementById(buttonID).addEventListener("click", unlistPet);
   };
 }
 
 const populateDogs = () => {
-  populatePage(pets.filter(pet => pet.type === "dog"));
+  filteredArray = pets.filter(pet => pet.type === "dog");
+  populatePage(filteredArray);
+  pageState = "dogs";
 }
 const populateCats = () => {
-  populatePage(pets.filter(pet => pet.type === "cat"));
+  filteredArray = pets.filter(pet => pet.type === "cat");
+  populatePage(filteredArray);
+  pageState = "cats";
 }
 const populateDinos = () => {
-  populatePage(pets.filter(pet => pet.type === "dino"));
+  filteredArray = pets.filter(pet => pet.type === "dino");
+  populatePage(filteredArray);
+  pageState = "dinos";
+}
+const populateAll = () => {
+  populatePage(pets);
+  pageState = "all";
 }
 
 
-const unlistPet = () => {
-  //pets.splice(index, 1);
-  console.log("Unlist button pressed");
-  clearPage();
-  //populatePage(pets);
+const unlistPet = (index) => {
+  // clearPage();
+
+  console.log(document.getElementById("buttonID-" + index).parentElement.parentElement.getElementsByTagName("h2")[0].innerHTML);
+
+  // switch(pageState) {
+  //   case "dogs":
+  //     filteredArray.splice(index, 1);
+  //     populatePage(filteredArray);
+  //     break;
+  //   case "cats":
+  //     filteredArray.splice(index, 1);
+  //     populatePage(filteredArray);
+  //     break;
+  //   case "dinos":
+  //     filteredArray.splice(index, 1);
+  //     populatePage(filteredArray);
+  //     break;
+  //   case "all":
+  //     pets.splice(index, 1);
+  //     populatePage(pets);
+  //     break;
+  // }
 }
+
+
+let pageState;
+let filteredArray;
 
 const initPage = () => {
-  clearPage();
-  populatePage(pets);
+  populateAll();
 }
 
 initPage();
@@ -280,4 +308,4 @@ initPage();
 document.getElementById("dogButton").addEventListener("click", populateDogs);
 document.getElementById("catButton").addEventListener("click", populateCats);
 document.getElementById("dinoButton").addEventListener("click", populateDinos);
-document.getElementById("noFilterButton").addEventListener("click", initPage);
+document.getElementById("noFilterButton").addEventListener("click", populateAll);
