@@ -2,8 +2,12 @@
     --dogColor: #35A7FF;
     --catColor: #EF8275;
     --dinoColor: #CFFFB0;
-    --accentColor: #555358;
-    --secondaryColor: #262730;
+    --primaryColor: #555358;
+    --secondaryColor: white;
+    
+    --bordersColor: black;
+    --primaryTextColor: black;
+    --secondaryTextColor: black;
 }
 
 
@@ -16,9 +20,9 @@ body {
 .header {
     text-align: center;
 
-    background-color: var(--accentColor);
+    background-color: var(--primaryColor);
     padding: 10px;
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid var(--bordersColor);
     margin: 0px;
 
     position: sticky;
@@ -28,7 +32,7 @@ body {
 }
 
 h1 {
-    color: black;
+    color: var(--primaryTextColor);
     text-decoration: underline;
     font-size: 5vw;
 }
@@ -44,8 +48,10 @@ h1 {
     min-width: 88px;
     width: 20vw;
 
+    color: var(--primaryTextColor);
+
     padding: 5px;
-    border: 2px solid black;
+    border: 2px solid var(--bordersColor);
     border-radius: 10px;
     margin: 5px;
 
@@ -61,7 +67,7 @@ h1 {
     background-color: var(--dinoColor);
 }
 #noFilterButton {
-    background-color: var(--secondaryColor);
+    background-color: var(--primaryColor);
     position: absolute;
     right: 8px;
     bottom: 8px;
@@ -90,39 +96,35 @@ h1 {
 
     width: 300px;
 
+    color: var(--primaryTextColor);
+    background-color: var(--primaryColor);
+
     padding: 0px;
-    border: 3px solid black;
+    border: 3px solid var(--bordersColor);
     border-radius: 10px;
     margin: 10px;
 
     justify-content: space-between;
     
-    background-color: var(--accentColor);
 }
 
 .cardTitle {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--bordersColor);
 
     margin-bottom: 15px;
 }
-#cardTitleType-dog {
-    background-color: var(--dogColor);
-}
-#cardTitleType-cat {
-    background-color: var(--catColor);
-}
-#cardTitleType-dino {
-    background-color: var(--dinoColor);
-}
 
+.cardImage {
+    color: var(--secondaryTextColor);
+}
 
 img {
     width: 250px;
     height: 175px;
-    border: 2px solid black;
+    border: 2px solid var(--bordersColor);
     border-radius: 10px;
 }
 
@@ -133,7 +135,7 @@ img {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 
-    border-top: 2px solid black;
+    border-top: 2px solid var(--bordersColor);
 
     z-index: 0;
 }

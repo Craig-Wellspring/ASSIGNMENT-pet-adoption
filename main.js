@@ -221,7 +221,7 @@ let pageState = null;
 const generateCardTemplate = (index) => {
   const cardTemplate = `
         <div class="petCard">
-          <div class="cardTitle" id="cardTitleType-${pets[index].type}">
+          <div class="cardTitle" style="background-color: var(--${pets[index].type}Color)">
               <h2>${pets[index].name}</h2>
           </div>
           <div class="cardImage">
