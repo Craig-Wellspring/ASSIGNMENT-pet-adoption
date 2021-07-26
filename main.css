@@ -1,26 +1,31 @@
 :root {
-    --dogColor: #35A7FF;
-    --catColor: #EF8275;
-    --dinoColor: #CFFFB0;
-    --primaryColor: #555358;
-    --secondaryColor: white;
+    --dogColor: #890c98;
+    --catColor: #1b980c;
+    --dinoColor: #98430c;
+    --mainColor: #0c6198;
+    --darkerMainColor: #052b43;
+    --lighterMainColor: #1397ed;
     
-    --bordersColor: black;
+    --headerTextColor: black; /* 98970c */ 
     --primaryTextColor: black;
     --secondaryTextColor: black;
+    
+    --bordersColor: black;
 }
 
 
 body {
     margin: 0px;
+    font-family: sans-serif;
     
-    background-color: var(--secondaryColor);
+    background-image: linear-gradient(0deg, var(--lighterMainColor) 0%, var(--darkerMainColor) 100%);
 }
 
 .header {
     text-align: center;
 
-    background-color: var(--primaryColor);
+    background-image: radial-gradient(circle, var(--lighterMainColor) 0%, var(--darkerMainColor) 100%);
+
     padding: 10px;
     border-bottom: 3px solid var(--bordersColor);
     margin: 0px;
@@ -32,7 +37,7 @@ body {
 }
 
 h1 {
-    color: var(--primaryTextColor);
+    color: var(--headerTextColor);
     text-decoration: underline;
     font-size: 5vw;
 }
@@ -67,7 +72,7 @@ h1 {
     background-color: var(--dinoColor);
 }
 #noFilterButton {
-    background-color: var(--primaryColor);
+    background-color: var(--mainColor);
     position: absolute;
     right: 8px;
     bottom: 8px;
@@ -97,7 +102,7 @@ h1 {
     width: 300px;
 
     color: var(--primaryTextColor);
-    background-color: var(--primaryColor);
+    background-image: radial-gradient(circle, var(--lighterMainColor) 0%, var(--darkerMainColor) 100%);
 
     padding: 0px;
     border: 3px solid var(--bordersColor);
@@ -109,6 +114,8 @@ h1 {
 }
 
 .cardTitle {
+    text-decoration: underline;
+
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 
