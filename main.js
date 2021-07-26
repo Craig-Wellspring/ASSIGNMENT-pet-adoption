@@ -213,11 +213,7 @@ const pets = [
 ];
 
 
-// Variable Declaration
-let pageState = null;
-
-
-// Functions
+// Generic Functions
 const generateCardTemplate = (index) => {
   const cardTemplate = `
         <div class="petCard">
@@ -261,21 +257,40 @@ const populatePage = (filterType) => {
   };
 }
 
+
+// Button Functions
 const unlistPet = (index) => {
   pets.splice(index, 1);
 
   populatePage(pageState);  
 }
 
+const changeState = (event) => {
+  switch (event.target.id) {
+    case "dogButton":
+      pageState = "dog";
+      break;
+    case "catButton":
+      pageState = "cat";
+      break;
+    case "dinoButton":
+      pageState = "dino";
+      break;
+    case "noFilterButton":
+      pageState = null;
+      break;
+  };
+  
+  populatePage(pageState);
+}
+
 
 // Init
 const initPage = () => {
+  let pageState = null;
+  document.querySelector("body").addEventListener("click", function (event) { changeState(event); });
+  
   populatePage(pageState);
-
-  document.getElementById("dogButton").addEventListener("click", function () { pageState = "dog"; populatePage(pageState); });
-  document.getElementById("catButton").addEventListener("click", function () { pageState = "cat"; populatePage(pageState); });
-  document.getElementById("dinoButton").addEventListener("click", function () { pageState = "dino"; populatePage(pageState); });
-  document.getElementById("noFilterButton").addEventListener("click", function () { pageState = null; populatePage(pageState);  });
 };
 
 
