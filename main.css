@@ -73,6 +73,7 @@ h1 {
 }
 #noFilterButton {
     background-color: var(--mainColor);
+    
     position: absolute;
     right: 8px;
     bottom: 8px;
