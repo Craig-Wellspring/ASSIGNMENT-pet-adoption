@@ -18,7 +18,7 @@ body {
     margin: 0px;
     font-family: sans-serif;
     
-    background-image: linear-gradient(0deg, var(--lighterMainColor) 0%, var(--darkerMainColor) 100%);
+    background-color: black;
 }
 
 .header {
